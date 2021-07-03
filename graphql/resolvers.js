@@ -3,16 +3,10 @@
 // graphQL 서버가 쿼리나 뮤테이션의 정의를 발견하면 리솔버를 찾고 해당 함수를 실행한다.
 // 다른 db갈 수 있고  다른 API 갈 수도있고.
 // Mutation은 Database의 상태가 변할 때 사용된다.
-import { getMovies, getById, addMovie, deleteMovie } from './db';
+import { getMovies} from './db';
 const resolvers = {
   Query: {
-    movies: () => getMovies(),
-    //getM번째 인자는 현재 Object를 보내는 Object, 2번 째는 arguments
-    movie: (_, { id }) => getById(id)
-  },
-  Mutation: {
-    addMovie: (_, {name, score}) => addMovie(name, score),
-    deleteMovie: (_, {id}) => deleteMovie(id),
+    movies: (_, {rating, limit}) => getMovies(limit, rating),
   }
 };
 
