@@ -1,0 +1,9 @@
+type Junpil {
+name: String!
+age: Int!
+gender: String!
+}
+
+type Query{
+  person: Junpil!
+}
